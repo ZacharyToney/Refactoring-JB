@@ -28,5 +28,11 @@ public class IfElseDemoTest {
     private double insuranceFor(double income) {
         return new IfElseDemo().calculateInsurance(income);
     }
+
+    public double calculateInsuranceVeryHigh(double income) {
+        return (income-60000)*0.02+105600;
+    }
+
+
 }
 
