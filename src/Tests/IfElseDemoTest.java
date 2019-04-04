@@ -1,38 +1,22 @@
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+package ifs;
 
 
-public class IfElseDemoTest {
-    @Test
-    public void low() {
-        assertEquals(1825, insuranceFor(5000), 0.01);
+class IfElseDemo {
+
+    private final InsuranceStrategyVeryHigh insuranceStrategyVeryHigh = new InsuranceStrategyVeryHigh();
+
+    public double calculateInsurance(double income) {
+
+
+        if (income <= 10000) {
+            return income*0.365;
+        } else if (income <= 30000) {
+            return (income-10000)*0.2+35600;
+        } else if (income <= 60000) {
+            return (income-30000)*0.1+76500;
+        } else {
+            return insuranceStrategyVeryHigh.calculateInsuranceVeryHigh(income);
+        }
+
     }
-
-    @Test
-    public void medium() {
-        assertEquals(38600, insuranceFor(25000), 0.01);
-    }
-
-    @Test
-    public void high() {
-        assertEquals(78500, insuranceFor(50000), 0.01);
-    }
-
-    @Test
-    public void veryHigh() {
-        assertEquals(106400, insuranceFor(100_000), 0.01);
-    }
-
-    private double insuranceFor(double income) {
-        return new IfElseDemo().calculateInsurance(income);
-    }
-
-    public double calculateInsuranceVeryHigh(double income) {
-        return (income-60000)*0.02+105600;
-    }
-
-
-}
-
